@@ -21,8 +21,6 @@ namespace UserService.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()
-                .HasData(new User(1, "Instructor", "instructor@uni.bg", "string", Domain.Enums.UserType.Instructor));
         }
     }
 }
