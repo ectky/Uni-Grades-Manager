@@ -31,3 +31,13 @@ services:
       - db
     ports:
       - "5000:5000"   
+      
+  authservice:
+    build:
+      context: ./AuthService
+      dockerfile: Dockerfile
+    depends_on:
+      - rabbitmq
+      - db
+    ports:
+      - "5002:5002"   
