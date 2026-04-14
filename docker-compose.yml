@@ -8,7 +8,7 @@ services:
       RABBITMQ_DEFAULT_USER: user
       RABBITMQ_DEFAULT_PASS: password
 
-  db:
+  usersdb:
     image: mcr.microsoft.com/mssql/server
     environment:
       SA_PASSWORD: ""
@@ -28,7 +28,7 @@ services:
       ConnectionStrings__UserServiceDatabase: ""
     depends_on:
       - rabbitmq
-      - db
+      - usersdb
     ports:
       - "5000:5000"   
       
@@ -38,6 +38,5 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - rabbitmq
-      - db
     ports:
       - "5002:5002"   
