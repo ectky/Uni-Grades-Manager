@@ -1,4 +1,4 @@
-namespace UserService.Application
+namespace AuthService.Application
 {
     public class WeatherForecast
     {

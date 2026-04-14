@@ -8,12 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<UserServiceDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:UserServiceDatabase"], r => r.UseRowNumberForPaging());
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:UserServiceDatabase"], r => { r.UseRowNumberForPaging();
+        r.EnableRetryOnFailure();
+    });
 });
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -21,19 +22,35 @@ using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<UserServiceDbContext>();
     // Automatically update database
-    context.Database.Migrate();
+    var retryCount = 5;
+    for (int i = 0; i < retryCount; i++)
+    {
+        try
+        {
+            context.Database.Migrate();
+            break; // Exit loop if successful
+        }
+        catch
+        {
+            // Log and wait before retrying
+            await Task.Delay(2000); // wait 2 seconds
+        }
+    }
 }
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+// Enable middleware to serve generated Swagger as a JSON endpoint
+app.UseSwagger();
 
+// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.)
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    c.RoutePrefix = string.Empty; // Set Swagger UI at the app's root
+});
 app.Run();

@@ -5,7 +5,7 @@
 namespace UserService.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,6 +26,12 @@ namespace UserService.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: ["Id", "Email", "Name", "Password", "StudentId", "Type"],
+                values: [1, "instructor@uni.bg", "Instructor", "pnSu5Xs8V0Fv2LcxL+lgwwtTE2S7lcws4RzeWdpny4clU2CD3/r7uleWt+5tT0dX", null, 1]);
+
         }
 
         /// <inheritdoc />
