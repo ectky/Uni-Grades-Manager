@@ -11,15 +11,14 @@ namespace AuthService.Application.Controllers
         [HttpGet]
         public async Task<IEnumerable<string>> ReceiveUsers()
         {
-            var options = new RestClientOptions("https://localhost:7159")
-            {
-                Authenticator = new HttpBasicAuthenticator("username", "password")
-            };
+            var options = new RestClientOptions("https://localhost:7159");
             var client = new RestClient(options);
 
             var request = new RestRequest("Users");
+            request.AddHeader("Authorization", $"Bearer ");
 
             var timeline = await client.GetAsync<IEnumerable<string>>(request);
+
             return timeline;
         }
     }

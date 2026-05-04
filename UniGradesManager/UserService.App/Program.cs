@@ -1,8 +1,11 @@
 using EntityFrameworkCore.UseRowNumberForPaging;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+using System.Text;
 using UserService.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,8 +20,20 @@ builder.Services.AddDbContext<UserServiceDbContext>(options =>
     });
 });
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = "https://localhost:7131",
+                ValidAudience = "https://localhost:7159",
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Secrets:JWTSecretKey"]))
+            };
+        });
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen(c =>
@@ -65,8 +80,8 @@ using (var scope = app.Services.CreateScope())
 // Configure the HTTP request pipeline.
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 // Enable middleware to serve generated Swagger as a JSON endpoint

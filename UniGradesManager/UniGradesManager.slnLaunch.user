@@ -4,11 +4,11 @@
     "Projects": [
       {
         "Path": "UserService.App\\UserService.App.csproj",
-        "Action": "StartWithoutDebugging"
+        "Action": "Start"
       },
       {
         "Path": "AuthService.App\\AuthService.App.csproj",
-        "Action": "StartWithoutDebugging"
+        "Action": "Start"
       }
     ]
   }
