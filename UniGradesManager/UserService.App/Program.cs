@@ -1,5 +1,8 @@
 using EntityFrameworkCore.UseRowNumberForPaging;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi;
 using UserService.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,13 +11,34 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<UserServiceDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:UserServiceDatabase"], r => { r.UseRowNumberForPaging();
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:UserServiceDatabase"], r => {
+        r.UseRowNumberForPaging();
         r.EnableRetryOnFailure();
     });
 });
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie();
+
 builder.Services.AddControllers();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityDefinition("bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Type = SecuritySchemeType.ApiKey,
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Scheme = "bearer"
+    });
+
+    c.AddSecurityRequirement(document => new OpenApiSecurityRequirement
+    {
+        [new OpenApiSecuritySchemeReference("bearer", document)] = []
+    });
+
+});
 
 var app = builder.Build();
 
@@ -42,6 +66,7 @@ using (var scope = app.Services.CreateScope())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 // Enable middleware to serve generated Swagger as a JSON endpoint

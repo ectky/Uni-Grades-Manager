@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/AuthService/">
+    <Project Path="AuthService.App/AuthService.App.csproj" />
+  </Folder>
+  <Folder Name="/CourseService/" />
+  <Folder Name="/GradeService/" />
+  <Folder Name="/UserService/">
+    <Project Path="UserService.App/UserService.App.csproj" />
+    <Project Path="UserService.Domain/UserService.Domain.csproj" />
+    <Project Path="UserService.Infrastructure/UserService.Infrastructure.csproj" />
+  </Folder>
+</Solution>

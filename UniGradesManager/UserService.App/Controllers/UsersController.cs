@@ -6,11 +6,10 @@ namespace UserService.Application.Controllers
     [Route("[controller]")]
     public class UsersController : ControllerBase
     {
-
-        [HttpGet(Name = "GetWeatherForecast")]
-        public string Get()
+        [HttpGet]
+        public IEnumerable<string> GetUsers()
         {
-            return "";
+            return ["User 1", "User 2"];
         }
     }
 }
