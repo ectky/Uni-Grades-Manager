@@ -8,10 +8,10 @@ namespace UserService.Application.Controllers
     [Authorize]
     public class UsersController : ControllerBase
     {
-        [HttpGet]
-        public IEnumerable<string> GetUsers()
+        [HttpGet("can-user-login")]
+        public bool CanUserLogin()
         {
-            return ["User 1", "User 2"];
+            return true;
         }
     }
 }

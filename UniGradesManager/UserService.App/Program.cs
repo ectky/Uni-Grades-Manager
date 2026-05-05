@@ -52,7 +52,6 @@ builder.Services.AddSwaggerGen(c =>
     {
         [new OpenApiSecuritySchemeReference("bearer", document)] = []
     });
-
 });
 
 var app = builder.Build();
