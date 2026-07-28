@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Excel reading/writing -->
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
+
+    <!-- JWT bearer authentication -->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.9" />
+
+    <!-- .NET Aspire service defaults: health checks, OpenTelemetry, service discovery -->
+    <PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="10.7.0" />
+
+    <!-- Swagger / OpenAPI -->
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Reference to the shared Aspire ServiceDefaults project, if used as in the AppHost template -->
+    <!-- <ProjectReference Include="..\ServiceDefaults\ServiceDefaults.csproj" /> -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GradingSystem.ServiceDefaults\GradingSystem.ServiceDefaults.csproj" />
+  </ItemGroup>
+
+</Project>

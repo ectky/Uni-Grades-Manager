@@ -1,0 +1,57 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradingSystem.AppHost", "src\GradingSystem.AppHost\GradingSystem.AppHost.csproj", "{54DEC40C-184E-4059-9420-6D989184ECFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradingSystem.ServiceDefaults", "src\GradingSystem.ServiceDefaults\GradingSystem.ServiceDefaults.csproj", "{0A047591-4608-4C07-BFF4-A202A7BD3BBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Api", "src\UserService.Api\UserService.Api.csproj", "{C9460265-2AF6-47F5-B995-13830BE0DDA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParserService.Api", "src\ParserService.Api\ParserService.Api.csproj", "{2B18BBE5-D885-41D3-BDBE-D764A01F22CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradeService.Api", "src\GradeService.Api\GradeService.Api.csproj", "{CA938249-BEE6-4C11-9A36-293F7E3D4B1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseService.Api", "src\CourseService.Api\CourseService.Api.csproj", "{A06233CF-B83E-4868-80F5-409DB7B72052}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyticsService.Api", "src\AnalyticsService.Api\AnalyticsService.Api.csproj", "{33F37DF0-6BA0-4D85-9A0B-9571DFC97579}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54DEC40C-184E-4059-9420-6D989184ECFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54DEC40C-184E-4059-9420-6D989184ECFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54DEC40C-184E-4059-9420-6D989184ECFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54DEC40C-184E-4059-9420-6D989184ECFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A047591-4608-4C07-BFF4-A202A7BD3BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A047591-4608-4C07-BFF4-A202A7BD3BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A047591-4608-4C07-BFF4-A202A7BD3BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A047591-4608-4C07-BFF4-A202A7BD3BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9460265-2AF6-47F5-B995-13830BE0DDA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9460265-2AF6-47F5-B995-13830BE0DDA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9460265-2AF6-47F5-B995-13830BE0DDA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9460265-2AF6-47F5-B995-13830BE0DDA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B18BBE5-D885-41D3-BDBE-D764A01F22CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B18BBE5-D885-41D3-BDBE-D764A01F22CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B18BBE5-D885-41D3-BDBE-D764A01F22CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B18BBE5-D885-41D3-BDBE-D764A01F22CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA938249-BEE6-4C11-9A36-293F7E3D4B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA938249-BEE6-4C11-9A36-293F7E3D4B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA938249-BEE6-4C11-9A36-293F7E3D4B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA938249-BEE6-4C11-9A36-293F7E3D4B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A06233CF-B83E-4868-80F5-409DB7B72052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A06233CF-B83E-4868-80F5-409DB7B72052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A06233CF-B83E-4868-80F5-409DB7B72052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A06233CF-B83E-4868-80F5-409DB7B72052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33F37DF0-6BA0-4D85-9A0B-9571DFC97579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F37DF0-6BA0-4D85-9A0B-9571DFC97579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F37DF0-6BA0-4D85-9A0B-9571DFC97579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F37DF0-6BA0-4D85-9A0B-9571DFC97579}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
